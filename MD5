@@ -1,0 +1,14 @@
+bd43799d6abf6c3d5cb4b0eb842735d7 *DESCRIPTION
+e74afc769922619cbe374f1326217344 *NAMESPACE
+6aea6912cc2509213d87ac4ec5100f3a *R/cdf.R
+24f08da7daa957cfb6533fc763962ef6 *R/descomponer.R
+ca3ec410312240313ba236819b9e934b *R/gdf.R
+1ea300ec0d2e696338313dc7a2117aa7 *R/gdt.R
+7fbcbbc4bde4dde7b896ed40cceee6d2 *R/gperiodograma.R
+f528810f746010fa20821ca3ac8be1b5 *R/periodograma.R
+3c829d741354cbf84049972ddda3142b *man/cdf.rd
+148f3cea43c696289c101c1cf3600801 *man/descomponer.rd
+71ce10df6bdd19b4196aeef0fe95775f *man/gdf.Rd
+e728a3e52ba1adba6f54e64dfea5fa92 *man/gdt.Rd
+b6e123e7266fbb242be1b91d14dfff75 *man/gperiodograma.rd
+fe8cef3c8cf48ff74785220e183a7f93 *man/periodograma.rd
