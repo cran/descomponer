@@ -7,10 +7,12 @@
 \description{Decompose a time series into seasonal, trend and irregular components using the transform amplitude-frequency domain to time series.
 %%  ~~ A concise (1-5 lines) description of the dataset. ~~
 }
-\usage{descomponer(y,frequency)}
+\usage{descomponer(y,frequency,type,news)}
 \arguments{
-  \item{y}{a Vector of the observed time-serie values }
+  \item{y}{a Vector of the observed time-serie values}
    \item{frequency}{Number of times in each unit time interval}
+   \item{type}{lineal (1), quadratic(2)}
+    \item{news}{new data to fitted, 0 no fitted}
    }
 \details{
 One could use a value of 7 for frequency when the data are sampled daily, and the natural time period is a week, or 4 and 12 when the data are sampled quarterly and monthly and the natural time period is a year.
@@ -26,11 +28,13 @@ The output is a data.frame object.
 %%  ~~ If necessary, more details than the __description__ above ~~
 }
 \value{\item{y}{a Vector of the observed time-serievalues}
-\item{TDST}{The trend an seasonal time serie of y}
+\item{TDST}{The trend and seasonal time serie of y}
 \item{TD}{The trend time serie of y}
 \item{ST}{The seasonal time serie of y}
 \item{IR}{The remainder time serie of y}
-
+\item{TDST_fitted}{The trend and seasonal estimated}
+\item{TD_fitted}{The trend estimated}
+\item{ST_fitted}{The seasonal estimated}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -43,8 +47,9 @@ Parra, F. (2014), Amplitude time-frequency regression, (http://econometria.wordp
 %%  ~~ possibly secondary sources and usages ~~
 }
 \examples{
-n<-100;x<-seq(0,24*pi,length=n);y<-sin(x)+rnorm(n,sd=.3)
-plot(ts(descomponer(y,12),frequency=12))
+data(ipi)
+datos <- descomponer(ipi,12,2,6)
+plot(ts(datos$data,frequency=12))
 }
 \keyword{smooth}
 \seealso{\code{\link[taRifx]{sort.data.frame}}}

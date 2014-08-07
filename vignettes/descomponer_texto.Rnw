@@ -1,0 +1,293 @@
+\documentclass{article}
+
+\usepackage{natbib}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+
+
+% \VignetteIndexEntry{descomponer_texto}
+
+
+<<descomponer_texto,include=FALSE,echo=FALSE>>=
+options(keep.source = TRUE, width = 60)
+descomponer_texto <- packageDescription("descomponer")
+@
+
+\begin{document}
+
+\title{AMPLITUDE DOMAIN-FEQUENCY REGRESSION }
+\author{Francisco Parra}
+\maketitle
+
+
+\vspace{1.5cm}
+
+{\bf Introduction}
+
+The time series can be seen from an aplitude-time domain or an amplitude-frequency domain. The amplitude-frecuency domain are used to analyze properties of filters used to decompose a time series into a trend, seasonal and irregular component investigating the gain function to examine the effect of a filter at a given frequency on the amplitude of a cycle for a particular time series. The ability to decompose data series into different frequencies for separate analysis and later recomposition is the first fundamental concept in the use of spectral techniques in forecasting, such as regression espectrum band, have had little development in econometric work. The low diffusion of this technique has been associated with  the computing difficulties  caused the need to work with complex numbers, and  inverse Fourier transform in order to convert everything back into real terms. But the problems from the use of the complex Fourier transform may be circumvented by carrying out the Fourier transform of the data in real terms, pre-multiplied  the time series by the orthogonal matrix Z whose elements are defined in Harvey (1978).
+
+The spectral analysis commences with the assumption that any series can be transformed into a set of sine and cosine waves, and can be used to both identify and quantify apparently nonperiodic short and long cycle processes  (first section). In  Band spectrum regression (second section) , is a brief summary  of the regression of the frequency domain  (Engle, 1974)  The application of spectral analysis to data containing both seasonal (high frequency) and non-seasonal (low frequency) components may produce adventages, since these different frequencies can be modelled separately and then may be re-combined to produce fitted values. Durbin (1967 and 1969) desing a technique for studying the general nature of the serial dependence in a satacionary time series, that can be use to statistic contraste in This type of exercises (third section). The time-varying regression, or the regression whit the vector of parameters time.varying can be understood in this context (four section). 
+
+
+
+{\bf Spectral analysis}
+
+Nerlove (1964) and Granger (1969) were the two foremost researchers on the application of spectral techniques to economic time series. 
+
+The use of spectral analysis requires a change of focus from an amplitude-time domain to an amplitude-frequency domain. Thus spectral analysis commences with the assumption that any series, {Xt}, can be transformed into a set of sine and cosine waves such as:
+
+\begin{equation}
+    X_t=\eta+\sum_{j=1}^N[a_j\cos(2\pi\frac{ft}n)+b_j\sin(2\pi\frac{ft}n)]
+    \end{equation}
+
+where $\eta$ is the mean of the series, $a_j$ and $b_j$  are the amplitude, f is the frequency over a span of n observations, t is a time index ranging from 1 to N where N is the number of periods for which we have observations, the fraction (ft/n) for different values of t converts the discrete time scale of time series into a proportion of 2 and j ranges from 1 to n where n= N/2. The highest observable frequency in the series is n/N (i.e., 0.5 cycles per time interval). High frequency dynamics (large f) are akin to short cycle processes while low frequency dynamics (small f) may be likened to long cycle processes. If we let $ \frac{ft}n=w $  then equation (1) can be re-written more compactly as:
+
+\begin{equation}
+    X_t=\eta+\sum_{j=1}^N[a_j\cos(\omega_j)+b_j\sin(\omega_j)]
+    \end{equation}
+
+Spectral analysis can be used to both identify and quantify apparently nonperiodic short and long cycle processes. A given series ${X_t}$ may contain many cycles of different frequencies and amplitudes and such combinations of frequencies and amplitudes may yield cyclical patterns which appear non-periodic with irregular amplitude. In fact, in such a time series it is clear from equation (2) that each observation can be broken down into component parts of different length cycles which, when added together (along with an error term), comprise the observation (Wilson and Perry, 2004). 
+
+The overall effect of the Fourier analysis of $N$ observation to a time date  is to partition the variability of the series into components at frequencies $\frac{2\pi}{N}$,  $\frac{4\pi}{N}$,...,$\pi$.The component at frequency $\omega_p=\frac{2\pi p}{N}$ if called the pth harmonic. For $p\neq \frac{N}{2}$, the equivalent form to write the pth harmonic are:
+
+$$a_p cos \omega_p t + b_p sin \omega_pt=R_p cos (\omega_p t + \phi_p)$$.
+
+where  $R_p=\sqrt{a_p+b_p}$ and $\phi_p=tan^{-1}(\frac{-b_p}{a_p})$
+
+The plot of $I(\omega) = \frac{N R^2_p}{4\pi}$ against $\omega$ is called the periodogram of time data. Trend will produce a peak at zero frequency, while seasonal variations produces peaks at the seasonal frquency and at integer multiples of the sesaonal frequency. Then, when a periodogram has a large peak at some frequency $\omega$ then related peaks may occurr at $2\omega$, $3\omega$,....(Chaftiel, C,2004)
+
+{\bf Band spectrum regression}
+
+
+Hannan (1963) first proposed regression analysis in the frequency domain,later examining the use of this technique in estimating distributed lag models (Hannan, 1965, 1967). Engle (1974) demonstrated that regression in the frequency domain has certain advantages over regression in the time domain.
+Consider the linear regression model
+\begin{equation}
+    y=X\beta+u
+    \end{equation}
+where X is an n x k matrix of fixed observations on the independent variables, $ \beta $ is a k x I vector of parameters, y is an n x 1 vector of observations on the dependent variable, and u is an n x I vector of disturbance terms each with zero mean and constant variance, $\sigma^2$. 
+
+The model may be expressed in terms of frequencies by applying a finite Fourier transform to the dependent and independent variables.For Harvey (1978) there are a number of reasons for doing this. One is to permit the application of the technique known as 'band spectrum regression', in which regression is carried out in the frequency domain with certain wavelengths omitted. Another reason for interest in spectral regression is that if the disturbances in (3) are serially correlated, being generated by any stationary stochastic process, then regression in the frequency domain will yield an asymptotically efficient estimator of $ \beta $.
+
+
+Engle (1974) compute the full spectrum regression with he complex finite Fourier transform based on the {n x n} matrix $W$, in which element $(t, s)$ is given by
+
+   $ w_{ts}=\frac{1}{\sqrt n} e^{i\lambda_t s}$ , $s= 0,1,...,n-1$
+    
+where $\lambda_t = 2\pi \frac {t}n$, t=0,1,...,n-1, and $i=\sqrt{-1}$.
+
+Pre-multiplying the observations in  observations in (3) by $W$ yields
+\begin{equation}
+    \dot y=\dot X\beta+\dot u
+    \end{equation}
+where $\dot y = Wy$,$ \dot X = WX$, and $ \dot u = Wu$.
+
+If the disturbance vector in (4) obeys the classical assumptions, viz. $E[u] = 0$ and $E[uu']=\sigma^2 I_n$. then the transformed disturbance vector, $\dot u$, will have identical properties. This follows because the matrix W is unitary, i.e., $WW^{T}= I$, where $W^T$ is the transpose of the complex conjugate of W. Furthermore the observations in (4) contain precisely the same amount of information as the untransformed observations in (3).
+
+Application of OLS to (4) yields, in view of the properties of  $\dot u$, the best linear unbiased estimator (BLUE) of $\beta$. This estimator is identical to the OLS estimator in (3), a result which follows directly on taking account of the unitary property of $W$. When the relationship implied by (4) is only assumed to hold for certain frequencies, band spectrum regression is appropriate, and this may be carried out by omitting the observations in (4) corresponding to the remaining frequencies. Since the variables in (4) are complex, however, Engle (1974) suggests an inverse Fourier transform in order to convert everything back into real terms  (Harvey,1974). 
+
+The problems which arise from the use of the complex Fourier transform may be circumvented by carrying out the Fourier transform of the data in real terms. In order to do this the observations in (3) are pre-multiplied by the orthogonal matrix $Z$ whose elements are defined as follows (Harvey,1978):
+
+
+$$z_{ts} = \left\lbrace
+\begin{array}{ll}
+\left(\frac{1}n\right) ^\frac{-1}2 &  t=1\\
+\left(\frac{2}n\right) ^\frac{1}2 \cos\left[\frac{\pi t(s-1)}n\right] & t=2,4,6,..(n-2) \mbox{ or }   (n-1)\\
+\left(\frac{2}n\right) ^\frac{1}2 \sin\left[\frac{\pi (t-1)(s-1)}T\right] & t=3,5,7,.., (n-1)  \mbox{ or }   n\\
+\left (n\right) ^\frac{-1}2 (-1)^{s+1} & t=n \mbox{  if  n  is  even } ,  s=1,...n,
+\end{array}
+\right.$$
+
+
+The resulting frequency domain regression model is:
+
+\begin{equation}
+    y^{**}=X^{**}\beta+v
+\end{equation}
+where $y^{**}=Zy$,$X^{**}=ZX$ and $v=Zu$.
+
+In view of the orthogonality of $Z$,  $E[vv']=\sigma^2 I_n$ when  $E[uu']=\sigma^2 I_n$ and the application of OLS to (5) gives the BLUE of $\beta$.
+
+Since all the elements of y** and X** are real, model may be treated by a standard regression package. If band spectrum regression is to be carried out, the number of rows in y** and X** is reduced accordingly, and so no problems arise from the use of an inappropriate number of degrees of freedom.
+
+
+
+{\bf Amplitude domain-frequency regression}
+
+
+Consider now the linear regression model
+\begin{equation}
+    y_t=\beta_tx_t+u_t
+    \end{equation}
+where $x_t$  is an n x 1 vector of fixed observations on the independent variable, $ \beta_t $ is a n x 1 vector of parameters,$y$ is an n x 1 vector of observations on the dependent
+variable, and  $u_t$  is an n x 1 vector de errores distribuidos con media cero y varianza constante.
+
+Whit the assumption that any series, $y_t$,$x_t$,$\beta_t$ and $ut$, can be transformed into a set of sine and cosine waves such as:
+
+
+
+$$y_t=\eta^y+\sum_{j=1}^N[a^y_j\cos(\omega_j)+b^y_j\sin(\omega_j)$$
+
+$$x_t=\eta^x+\sum_{j=1}^N[a^y_j\cos(\omega_j)+b^y_j\sin(\omega_j)]$$
+
+$$ \beta_t=\eta^\beta+\sum_{j=1}^N[a^\beta_j\cos(\omega_j)+b^\beta_j\sin(\omega_j)]$$
+
+
+
+ Pre-multiplying (6) by  $Z$:
+
+
+ $$ \dot y=\dot x\dot\beta+\dot u $$ (7)
+    
+where $\dot y = Zy$,$ \dot x = Zx$, $ \dot \beta = Z\beta$ y  $ \dot u = Zu$
+
+The system (7) can be rewritten as (see appendix):
+
+
+$$ \dot y=Zx_tI_nZ^T\dot \beta + ZI_nZ^T\dot u$$ (8)
+
+
+If we call $ \dot e = ZI_nZ ^ T \dot u $, It can be found  the $ \dot \beta $ that minimize the sum of squared errors $ E_T = Z ^ T \dot e $.
+
+
+Once you have found the solution to this optimization, the series would be transformed into the time domain.
+
+ 
+
+ {\bf Seasonal Decomposition by the Fourier Coefficients}
+
+The amplitude domain-frequency regression  method could be use to decompose a time series into seasonal, trend and irregular components of a time serie $y_t$ of frequency $b$ or number of times in each unit time interval. For example, one could use a value of 7 for frequency when the data are sampled daily, and the natural time period is a week, or 4 and 12 when the data are sampled quarterly and monthly and the natural time period is a year.
+
+If the observation are teken at equal interval of length, $\bigtriangleup t$, then the angular frequency is $\omega=frac{\pi}{\bigtriangleup t}$. The equivalent frequency expressed in cycles per unit time is $f=\frac{\omega}{2\pi}=\frac{1}{2} \bigtriangleup t$. Whit only one observation per year, $\omega=\pi$ radians per year or $f=\frac{1}{2}$ cycle per year (1 cicle per two years), variation whit a wavelength of one year has fequency $\omega=2\pi$ radians per year or $f=1$ cicle per year.
+
+For example, in a monthly time serie of $N=100$ observation, the seasonal cycles or the wavelenghth of one year has frequency $f= \frac{100}{12}=8,33$ cycles for 100 dates. If the time serie are 8 full year, the less seasonal frequency are 1 cycle for year, or 8 cycle for 96 observation. The integer multiplies are  $2 \frac{N}{12}$,$3 \frac{N}{12}$...., and  wavelenghth low of one year has frequency are $f<\frac{N}{12}$.
+
+We can use (8) to estimate the fourier coefficient in time serie $y_t$:
+
+$$\dot y=Z t I_nZ^T\dot \beta + ZI_nZ^T\dot u$$ (9)
+
+being $t=(1,1,....1)_N$ or $t=(1,2,3,...,N)_N$.
+
+If $t=(1,1,1,....1)_N$ , 
+$$A=Z t I_nZ^T=\left(
+\begin{array}{cccccccc}
+1& 0& 0& 0 & 0 & . & 0& 0 \\
+0& 1& 0& 0 & 0 & . & 0& 0 \\
+0& 0& 1& 0 & 0 & . & 0& 0 \\
+0& 0& 0& 1 & 0 & .& 0& 0 \\
+0& 0& 0& 0 & 1 & . & 0& 0 \\
+.& .& .& . & . & .& .& . \\
+0& 0& 0& 0 & 0 & . & 0& 1 \\
+\end{array}
+\right)$$ 
+
+Then $$A=\left(
+\begin{array}{cccccccc}
+1& 0& 0& 0 & 0 & . & 0& 0 \\
+0& 1& 0& 0 & 0 & . & 0& 0 \\
+0& 0& 1& 0 & 0 & . & 0& 0 \\
+0& 0& 0& 1 & 0 & .& 0& 0 \\
+0& 0& 0& 0 & 0 & . & 0& 0 \\
+.& .& .& . & . & .& .& . \\
+0& 0& 0& 0 & 0 & . & 0& 0 \\
+\end{array}
+\right) $$
+
+are use in (9) to make the  regression band spectrum with the first four coefficient of fourier of the serie $\dot y$.
+
+The  first$2\frac{N}{12}-1$ rows the A matrix are used to estimate the fourier coefficients corresponding to cycles of low frequency, trend cycles, and rows $2 \frac{N}{12}$ and $2 \frac{N}{12}+1$ are used to  estimate the fourier coefficients of 1 cicle for year.  The integer multiplies re the rows   $6 \frac{N}{12}$, $6 \frac{N}{12}+1$, $8 \frac{N}{12}$...should be used to obtain the seasonal frequency.
+
+{\bf  Example:descomponse by amplitude domain-frequency regression.  IPI base 2009  in Cantabria}
+
+The Industrial Price Index of Cantabria is presented in the table below
+
+The time serie by trend an seasonal is named $TDST$.  $TD$ is calculate by band spectrum regresion of the serie $y_ t$ and the temporal index $t$, in which regression is carried out in low amplitude- frequency. The seasonal serie $ST$ result to take away $TD$ to $TDST$ , and the irregular serie $IR$ result to take away $TDST$  to $y_t$ (figure 8). The temporal index $t$ used in the exemple are the OLS regression into IPI and the trend index $t=(1,2,3,....N)_N$. The new data fitted are 6 months.
+
+
+
+<<descomponer>>=
+library(descomponer)
+data(ipi)
+descomponer(ipi,12,1,6)
+@
+
+
+{\bf Bibliography }
+
+Chatfield, Cris (2004). "The Analysis of Time Series: An Introduction (6th edn.)", 2004. CRC Press
+
+Engle, Robert F. (1974), "Band Spectrum Regression", International Economic Review 15,1-11.
+
+Hannan, E.J. (1963), "Regression for Time Series", in Rosenblatt, M. (ed.), Time Series Analysis, New York, John Wiley.
+
+Harvey, A.C. (1978), "Linear Regression in the Frequency Domain", International Economic Review, 19, 507-512.
+
+Wilson, P.J. and  Perry, L.J. (2004). "Forecasting Australian Unemployment Rates Using Spectral Analysis" Australian Jurnal of Labour Economics, vol 7,no 4, December 2004, pp 459-480.
+ \newpage
+{\bf Appendix}
+
+The multiplication of two harmonic series of diferent frequency:
+
+$$   [a_j\cos (\omega_j)+b_j\sin (\omega_j)]x [a_i\cos (\omega_i)+b_i\sin (\omega_i)]$$
+gives the following sum:
+
+$$   a_ja_i\cos(\omega_j)\cos(\ omega_i)+a_jb_i\cos (\omega_j)\sin (\omega_i)$$
+
+$$+a_ib_j\sin (\omega_j)\cos (\omega_i)b_i\sin (\omega_i)+b_jb_i\sin(\omega_j)\sin(\omega_i)$$
+
+that using the identity of the products of sines and cosines gives the following results:
+
+$$ \frac{a_ja_i+b_jb_i}{2}\cos(\omega_j- \omega_i)+ \frac{b_ja_i-b_ja_i}{2}\sin(\omega_j- \omega_i)$$
+
+$$+\frac{a_ja_i-b_jb_i}{2}\cos(\omega_j+ \omega_i)++ \frac{b_ja_i+b_ja_i}{2}\sin(\omega_j+ \omega_i)$$
+ 
+The circularity of $\omega $ determines that the product of two harmonics series resulting in a new series in which the Fourier coefficients it's a linear combination of the Fourier coefficients of the two harmonics series.
+
+In the following two series:
+
+$$ y_t=\eta^y+a_0^y\cos(\omega_0)+b_0^y\sin(\omega_0)+a_1^y\cos(\omega_1)+b_1^y\sin(\omega_1)+ a_2^y\cos(\omega_2)+b_2^y\sin(\omega_2)+a_3^y\cos(\omega_3)$$
+
+$$ x_t=\eta^x+a_0^x\cos(\omega_0)+b_0^x\sin(\omega_0)+a_1^x\cos(\omega_1)+b_1^x\sin(\omega_1)+ a_2^x\cos(\omega_2)+b_2^x\sin(\omega_2)+a_3^x\cos(\omega_3)$$
+
+given a matrix $\Theta^{\dot x\dot x}$  of size 8x8 :
+
+
+$$\Theta^{\dot x\dot x} = \eta^x I_8+\frac{1}2\left(
+\begin{array}{cccccccc}
+0& a_0^x& b_0^x & a_1^x & b_1^x & a_2^x & b_2^x& 2a_3^x \\
+2a_0^x& a_1^x& b_1^x & a_0^x+a_2^x & b_0^x+b_2^x & a_1^x+2a_3^x & b_1^x& 2a_2^x \\
+2b_0^x& b_1^x&- a_1^x & -b_0^x+b_2^x & a_0^x-a_2^x &- b_1^x &a_1^x- a_3^x &- 2b_2^x \\
+2a_1^x& a_0^x+a_2^x&- b_0^x+b_2^x & 2a_3^x &0 & a_0^x+a_2^x & b_0^x-b_2^x& 2a_1^x \\
+2b_1^x& a_0^x+b_2^x&- b_0^x-a_2^x &0& -2a_3^x & -b_0^x+b_2^x & a_0^x-a_2^x& -2b_1^x \\
+2a_2^x& a_1^x+2a_3^x&- b_1^x & a_0^x+a_2^x &-b_0^x-b_2^x & a_1^x &- b_1^x& 2a_0^x \\
+2b_2^x& b_1^x& a_1^x-2a_3^x & b_0^x-b_2^x &a_0^x-a_2^x & -b_1^x &- a_1^x& -2b_0^x \\
+2a_3^x& a_2^x& -b_2^x & a_1^x &- b_1^x & a_0^x & -b_0^x&  0 
+\end{array}
+\right)$$
+
+
+
+Demonstrates that:
+
+$$\dot z=\Theta^{\dot x\dot x}\dot y$$
+    
+where $\dot y = Wy$,$ \dot x = Wx$, and $ \dot z = Wz$.
+
+
+$$z_t = x_t y_t = W^T\dot x W^T\dot y = W^T Wx_t W^T\dot y = x_t I_n W^T\dot y$$
+
+$$W^T\dot z=x_t I_n W^T\dot y$$
+
+$$\dot z=W^Tx_tI_nW\dot y$$
+
+It is true that;
+
+$$x_tI_n=W^T\Theta^{\dot x\dot x}W$$
+
+and
+
+$$\Theta^{\dot x\dot x}=W^Tx_tI_nW$$
+ 
+ 
+\end{document}
