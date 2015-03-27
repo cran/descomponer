@@ -7,15 +7,13 @@
 \description{Plotting the trend and seasonal of time series.
 %%  ~~ A concise (1-5 lines) description of the dataset. ~~
 }
-\usage{gdescomponer(y,freq,type,news,year,q)}
+\usage{gdescomponer(y,freq,type,year,q)}
 \arguments{
   \item{y}{a vector of the observed time-serie values    
 }
 \item{freq}{Number of times in each unit time interval    
 }
 \item{type}{lineal (1), quadratic(2)    
-}
-\item{news}{new data to fitted, 0 no fitted    
 }
 \item{year}{the year of the first observation    
 }
@@ -27,7 +25,7 @@
 }
 \examples{
 data(ipi)
-gdescomponer(ipi,12,1,6,2002,1)
+gdescomponer(ipi,12,1,2002,1)
 }
 \keyword{smooth}
 \seealso{\code{\link[descomponer]{descomponer}}}

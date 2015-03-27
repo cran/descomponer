@@ -153,7 +153,7 @@ If we call $ \dot e = ZI_nZ ^ T \dot u $, It can be found  the $ \dot \beta $ th
 
 Once you have found the solution to this optimization, the series would be transformed into the time domain.
 
- 
+
 
  {\bf Seasonal Decomposition by the Fourier Coefficients}
 
@@ -202,14 +202,15 @@ The  first$2\frac{N}{12}-1$ rows the A matrix are used to estimate the fourier c
 
 The Industrial Price Index of Cantabria is presented in the table below
 
-The time serie by trend an seasonal is named $TDST$.  $TD$ is calculate by band spectrum regresion of the serie $y_ t$ and the temporal index $t$, in which regression is carried out in low amplitude- frequency. The seasonal serie $ST$ result to take away $TD$ to $TDST$ , and the irregular serie $IR$ result to take away $TDST$  to $y_t$ (figure 8). The temporal index $t$ used in the exemple are the OLS regression into IPI and the trend index $t=(1,2,3,....N)_N$. The new data fitted are 6 months.
+The time serie by trend an seasonal is named $TDST$.  $TD$ is calculate by band spectrum regresion of the serie $y_ t$ and the temporal index $t$, in which regression is carried out in low amplitude- frequency. The seasonal serie $ST$ result to take away $TD$ to $TDST$ , and the irregular serie $IR$ result to take away $TDST$  to $y_t$ (figure 8). The temporal index $t$ used in the exemple are the OLS regression into IPI and the trend index $t=(1,2,3,....N)_N$. 
 
 
 
 <<descomponer>>=
 library(descomponer)
 data(ipi)
-descomponer(ipi,12,1,6)
+descomponer(ipi,12,1)$datos
+gdescomponer(ipi,12,1,2002,1)
 @
 
 

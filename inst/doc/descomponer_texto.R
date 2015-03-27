@@ -13,6 +13,7 @@ descomponer_texto <- packageDescription("descomponer")
 ###################################################
 library(descomponer)
 data(ipi)
-descomponer(ipi,12,1,6)
+descomponer(ipi,12,1)$datos
+gdescomponer(ipi,12,1,2002,1)
 
 
