@@ -1,5 +1,5 @@
 MW <- function(n) {
-# Author: Francisco Parra Rodr?guez 
+# Author: Francisco Parra Rodriguez 
 # Some ideas from: Harvey, A.C. (1978), Linear Regression in the Frequency Domain, International Economic Review, 19, 507-512.
 # http://econometria.wordpress.com/2013/08/21/estimation-of-time-varying-regression-coefficients/ 
 uno <- as.numeric (1:n)

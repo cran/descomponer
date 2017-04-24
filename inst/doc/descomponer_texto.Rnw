@@ -153,6 +153,19 @@ If we call $ \dot e = ZI_nZ ^ T \dot u $, It can be found  the $ \dot \beta $ th
 
 Once you have found the solution to this optimization, the series would be transformed into the time domain.
 
+{\bf  Example: Regression in frequency domain into the GDP and emploiment in Canada }
+
+The function transforms the time series in amplitude-frequency domain, order the fourier coefficient by the comun frequencies in cross-spectrum, make a band spectrum regresion of the serie $y_t$ and $x_t$ for every set of fourier coefficients, and select the model to pass the significance bands to periodogram cumulative (Venables and Ripley,2002).
+
+
+<<rdf>>=
+library(descomponer)
+data(PIB)
+data (celec)
+rdf(celec,PIB)
+gtd(rdf(celec,PIB)$datos$res)
+@
+
 
 
  {\bf Seasonal Decomposition by the Fourier Coefficients}
@@ -202,12 +215,11 @@ The  first$2\frac{N}{12}-1$ rows the A matrix are used to estimate the fourier c
 
 The Industrial Price Index of Cantabria is presented in the table below
 
-The time serie by trend an seasonal is named $TDST$.  $TD$ is calculate by band spectrum regresion of the serie $y_ t$ and the temporal index $t$, in which regression is carried out in low amplitude- frequency. The seasonal serie $ST$ result to take away $TD$ to $TDST$ , and the irregular serie $IR$ result to take away $TDST$  to $y_t$ (figure 8). The temporal index $t$ used in the exemple are the OLS regression into IPI and the trend index $t=(1,2,3,....N)_N$. 
+The time serie by trend an seasonal is named $TDST$.  $TD$ is calculate by band spectrum regresion of the serie $y_ t$ and the temporal index $t$, in which regression is carried out in low amplitude- frequency. The seasonal serie $ST$ result to take away $TD$ to $TDST$ , and the irregular serie $IR$ result to take away $TDST$  to $y_t$ . The temporal index $t$ used in the exemple are the OLS regression into IPI and the trend index $t=(1,2,3,....N)_N$. 
 
 
 
 <<descomponer>>=
-library(descomponer)
 data(ipi)
 descomponer(ipi,12,1)$datos
 gdescomponer(ipi,12,1,2002,1)
@@ -223,6 +235,8 @@ Engle, Robert F. (1974), "Band Spectrum Regression", International Economic Revi
 Hannan, E.J. (1963), "Regression for Time Series", in Rosenblatt, M. (ed.), Time Series Analysis, New York, John Wiley.
 
 Harvey, A.C. (1978), "Linear Regression in the Frequency Domain", International Economic Review, 19, 507-512.
+
+Venables and Ripley (2002), "Modern Applied Statistics with S" (4th edition, 2002).
 
 Wilson, P.J. and  Perry, L.J. (2004). "Forecasting Australian Unemployment Rates Using Spectral Analysis" Australian Jurnal of Labour Economics, vol 7,no 4, December 2004, pp 459-480.
  \newpage

@@ -9,9 +9,18 @@ descomponer_texto <- packageDescription("descomponer")
 
 
 ###################################################
-### code chunk number 2: descomponer
+### code chunk number 2: rdf
 ###################################################
 library(descomponer)
+data(PIB)
+data (celec)
+rdf(celec,PIB)
+gtd(rdf(celec,PIB)$datos$res)
+
+
+###################################################
+### code chunk number 3: descomponer
+###################################################
 data(ipi)
 descomponer(ipi,12,1)$datos
 gdescomponer(ipi,12,1,2002,1)
