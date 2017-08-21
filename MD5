@@ -1,4 +1,4 @@
-564f097ebc510cb4611343d20f0be1c1 *DESCRIPTION
+89b1ecb16fdd25afe2b0bb8dd14dba68 *DESCRIPTION
 bac55d5f5124cafbfa208e2d602f82ae *NAMESPACE
 dfabc2e80c44b69f967ece4f738e38af *R/MW.R
 2522d06dd3727e01f2012b051029673c *R/cdf.R
@@ -11,13 +11,13 @@ a0e6e147633c9a257099c1349c950af5 *R/gtd.R
 2ee59a89f626d25638ee3409ebb21832 *R/periodograma.R
 f8a680d3a2912babfd19e06a6cb1be6b *R/rdf.R
 a4459d2ef2f8d5c7d7f1ce9643f0f07a *R/td.R
-095e84300370193a903d4f25ca33d8c8 *build/vignette.rds
-dd1d2309e7b3305e751713c673d3a176 *data/PIB.rda
+d5a9ac5fb26c22245b9fb2095167e2dc *build/vignette.rds
+e6454c72e4d4e4cb73373aa3ea191874 *data/PIB.rda
 07ca17eb14000ca34efc1ef3829e9ded *data/celec.rda
 4ddfeb3dd5452c5f1636802fa0e16401 *data/ipi.rda
 52284caa1a40ce119fe8da20f6a86bc7 *inst/doc/descomponer_texto.R
 6d93dbc2f9bede8518163430356488d9 *inst/doc/descomponer_texto.Rnw
-060fd7c9dd9b460a6e443f5c0976dc27 *inst/doc/descomponer_texto.pdf
+5df094a27f2e2e4e9a3f2426516c2e5a *inst/doc/descomponer_texto.pdf
 19b574111a00b977ee6796a0fbaa378c *man/MW.Rd
 7fd8c58c9d416fc3e154412a4eb0a1d6 *man/PIB.rd
 3c829d741354cbf84049972ddda3142b *man/cdf.rd
@@ -34,4 +34,3 @@ d731d2758883001b496338ffaf914251 *man/rdf.rd
 2db44710a2b98b0d71a655dc2306a890 *man/td.rd
 baef3bc145b84dd5a369ad9d8ce1aa78 *vignettes/descomponer_texto-concordance.tex
 6d93dbc2f9bede8518163430356488d9 *vignettes/descomponer_texto.Rnw
-7ec15c16d0d66790f28e90343c5434a3 *vignettes/framed.sty
