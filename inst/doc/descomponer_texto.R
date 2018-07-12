@@ -19,7 +19,15 @@ gtd(rdf(celec,PIB)$datos$res)
 
 
 ###################################################
-### code chunk number 3: descomponer
+### code chunk number 3: predecirdf
+###################################################
+mod1=rdf(celec,PIB)
+newdata=c(100)
+predecirdf(mod1,newdata)
+
+
+###################################################
+### code chunk number 4: descomponer
 ###################################################
 data(ipi)
 descomponer(ipi,12,1)$datos

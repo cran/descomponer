@@ -52,4 +52,4 @@ datos <- descomponer(ipi,12,2)
 plot(ts(datos$datos,frequency=12))
 }
 \keyword{smooth}
-\seealso{\code{\link[taRifx]{sort.data.frame}}}
+

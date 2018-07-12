@@ -129,9 +129,9 @@ Whit the assumption that any series, $y_t$,$x_t$,$\beta_t$ and $ut$, can be tran
 
 $$y_t=\eta^y+\sum_{j=1}^N[a^y_j\cos(\omega_j)+b^y_j\sin(\omega_j)$$
 
-$$x_t=\eta^x+\sum_{j=1}^N[a^y_j\cos(\omega_j)+b^y_j\sin(\omega_j)]$$
+$$x_t=\eta^x+\sum_{j=1}^N[a^x_j\cos(\omega_j)+b^x_j\sin(\omega_j)]$$
 
-$$ \beta_t=\eta^\beta+\sum_{j=1}^N[a^\beta_j\cos(\omega_j)+b^\beta_j\sin(\omega_j)]$$
+
 
 
 
@@ -166,7 +166,19 @@ rdf(celec,PIB)
 gtd(rdf(celec,PIB)$datos$res)
 @
 
+Make the forecast  $Y_t(h)=\beta_0+\beta_1X_t(h)+....$, you need to have the expansion for $X_t(h)$ of the development 
 
+\begin{equation}
+    X_t(h)=\eta+\sum_{j=1}^N[a_j\cos(\omega_j)+b_j\sin(\omega_j)]
+    \end{equation}
+
+and this development using the orthogonal transformations $W$ to have regressors in the frequency and time domain has to be done with $n$ observations. Therefore, we have to build a new base of regressors of size $n$ that have to be elaborated with observations $X_t$, being now $t=h,h+1,h+2, ...... ,n,n+1,n+2, ....,n+h$.
+
+<<predecirdf>>=
+mod1=rdf(celec,PIB)
+newdata=c(100)
+predecirdf(mod1,newdata)
+@
 
  {\bf Seasonal Decomposition by the Fourier Coefficients}
 

@@ -1,5 +1,5 @@
 descomponer <- function (y,frequency,type) {
-# Author: Francisco Parra Rodriguez
+  # Author: Francisco Parra Rodriguez
   # http://rpubs.com/PacoParra/24432
   # date:"y", frequency:"frequency". 
   # Use 7 for frequency when the data are sampled daily, and the natural time period is a week, 
@@ -12,19 +12,18 @@ descomponer <- function (y,frequency,type) {
     f2 <- (n-1)/(2*frequency)}
   #Modelo para obtener serie con tendencia
   c <- seq(from=2, to=(2+(n/frequency) ))
-  #Use the "sort.data.frame" function, Kevin Wright. Package taRifx
   i <- seq(1:n)
   i2 <- i*i  
-   i <- seq(1:n)
+  i <- seq(1:n)
   i2 <- i*i  
   if (type==1)
   {eq <- lm(y~i)  
-   z <- eq$fitted} else {
-     if (type==2) eq <- lm(y~i+i2) 
-     z <- eq$fitted} 
-     cx <- M%*%diag(z)
-     cx <- cx%*%t(M)
-    id <- seq(1,n)
+  z <- eq$fitted} else {
+    if (type==2) eq <- lm(y~i+i2) 
+    z <- eq$fitted} 
+  cx <- M%*%diag(z)
+  cx <- cx%*%t(M)
+  id <- seq(1,n)
   S1 <- data.frame(cx)
   S2 <- S1[1:(2+(n/frequency)),]
   X <- as.matrix(S2)
@@ -44,26 +43,25 @@ descomponer <- function (y,frequency,type) {
   sel <- subset(S,f1==trunc(2*f2))
   c <- seq(from=2,to=(n/f2))
   for (i in c) {sel1 <- subset(S,f1==i*trunc(2*f2))
-                sel <- rbind(sel,sel1)}
+  sel <- rbind(sel,sel1)}
   m1 <- c(sel$f1 * 2)
   m2 <- c(m1+1)
   c <- c(m1,m2)
   n3 <- length(c)
   d <- rep(1,n3)
   s <- data.frame(c,d)
-  S <- sort.data.frame (s,formula=~c)
-  #Use the "sort.data.frame" function, Kevin Wright. Package taRifx
+  S=s[with(s, order(c)), ]
   l <- frequency*trunc(n/frequency)
   ML <- MW(l)
   i <- seq(1:l)
   i2 <- i*i  
   if (type==1)
-   {eq <- lm(y[1:l]~i)  
-   z <- eq$fitted} else {
-     if (type==2) eq <- lm(y[1:l]~i+i2) 
-     z <- eq$fitted}   
-   cx <- ML%*%diag(z) #problema
-   cx <- cx%*%t(ML)
+  {eq <- lm(y[1:l]~i)  
+  z <- eq$fitted} else {
+    if (type==2) eq <- lm(y[1:l]~i+i2) 
+    z <- eq$fitted}   
+  cx <- ML%*%diag(z) #problema
+  cx <- cx%*%t(ML)
   id <- seq(1,l)
   S1 <- data.frame(cx,c=id)
   S2 <- merge(S,S1,by.x="c",by.y="c")
@@ -75,7 +73,7 @@ descomponer <- function (y,frequency,type) {
   # la paso al dominio del tiempo
   X2 <- data.frame(t(ML)%*%t(X1))
   if (n==l) X3 <- X2 else
-  X3 <- rbind(X2,X2[1:(n-l),])
+    X3 <- rbind(X2,X2[1:(n-l),])
   # la paso al dominio de la frecuencia
   X4 <-M%*%as.matrix(X3)
   cy <- M%*%IRST
@@ -89,5 +87,5 @@ descomponer <- function (y,frequency,type) {
   data <- data.frame(y,TDST,TD,ST,IR)
   regresoresTD <- data.frame(XTD)
   regresoresST <- data.frame(XST)
- list(datos=data,regresoresTD=regresoresTD,regresoresST=regresoresST,coeficientesTD=BTD,coeficientesST=BST)
-  }
+  list(datos=data,regresoresTD=regresoresTD,regresoresST=regresoresST,coeficientesTD=BTD,coeficientesST=BST)
+}

@@ -1,4 +1,3 @@
 exportPattern("^[[:alpha:]]+")
-import(taRifx)
 importFrom("graphics", "par", "plot")
-importFrom("stats", "frequency", "lm", "ts")
+importFrom("stats", "frequency", "lm", "ts","predict")
