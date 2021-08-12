@@ -1,18 +1,21 @@
-\name{predecirdf}
-\alias{predecirdf}
+\name{estimardf}
+\alias{estimardf}
 \docType{data}
 \title{ Prediction whit Regression in domain frequency
 }
 \description{Make a prediction for a rdf object
 }
-\usage{predecirdf(a,b)}
+\usage{estimardf(a,b)}
 \arguments{
   \item{a}{a model rdf }
    \item{b}{An optional data frame in which to look for variables with which to predict. If omitted, the fitted values are used.}  
    }
 \details{ Use predict.lm, with interval="prediction"
 
+
+
 Slow computer in time series higher 1000 data.
+
 
 }
 \value{\item{fit}{vector or matrix as above}
@@ -31,7 +34,7 @@ Parra, F. (2014), Amplitude time-frequency regression, (http://econometria.wordp
 data(PIB)
 data(celec)
 mod1=rdf(celec,PIB)
-newdata=c(100)
-predecirdf(mod1,newdata)
+newdata=c(20000)
+estimardf(mod1,newdata)
 }
 \keyword{smooth}

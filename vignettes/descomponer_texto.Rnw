@@ -174,10 +174,10 @@ Make the forecast  $Y_t(h)=\beta_0+\beta_1X_t(h)+....$, you need to have the exp
 
 and this development using the orthogonal transformations $W$ to have regressors in the frequency and time domain has to be done with $n$ observations. Therefore, we have to build a new base of regressors of size $n$ that have to be elaborated with observations $X_t$, being now $t=h,h+1,h+2, ...... ,n,n+1,n+2, ....,n+h$.
 
-<<predecirdf>>=
+<<predictrdf>>=
 mod1=rdf(celec,PIB)
 newdata=c(100)
-predecirdf(mod1,newdata)
+predictrdf(mod1,newdata)
 @
 
  {\bf Seasonal Decomposition by the Fourier Coefficients}

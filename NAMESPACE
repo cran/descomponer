@@ -1,3 +1,3 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("graphics", "par", "plot")
-importFrom("stats", "frequency", "lm", "ts","predict")
+importFrom("stats", "frequency", "lm", "ts","predict","terms")

@@ -1,5 +1,4 @@
 ### R code from vignette source 'descomponer_texto.Rnw'
-### Encoding: ISO8859-1
 
 ###################################################
 ### code chunk number 1: descomponer_texto
@@ -19,11 +18,11 @@ gtd(rdf(celec,PIB)$datos$res)
 
 
 ###################################################
-### code chunk number 3: predecirdf
+### code chunk number 3: predictrdf
 ###################################################
 mod1=rdf(celec,PIB)
 newdata=c(100)
-predecirdf(mod1,newdata)
+predictrdf(mod1,newdata)
 
 
 ###################################################
